@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join as a Pro | Occasioner</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Preserve join.html specific styles while integrating with main.css */
+        :root {
+            --bg-color: #FFF9E7;
+            --primary-yellow: #FBC02D;
+            --accent-yellow: #FFF1C1;
+            --text-dark: #333;
+            --text-muted: #555;
+
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 50px 8%;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 15px solid var(--primary-yellow);
+        }
+
+        /* --- Agreement Grid --- */
+        .section-title {
+            text-align: center;
+            background: var(--accent-yellow);
+            width: fit-content;
+            margin: 40px auto;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 0 8%;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 2px solid #ddd;
+            padding: 25px;
+            border-radius: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Detailed Summary --- */
+        .summary-box {
+            padding: 0 8%;
+            margin-bottom: 60px;
+        }
+
+        .summary-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            font-size: 0.95rem;
+        }
+
+        .summary-content h4 {
+            margin-bottom: 10px;
+        }
+
+        /* --- CTA Footer --- */
+        .cta-container {
+            background: var(--primary-yellow);
+            margin: 0 8% 50px 8%;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .cta-container h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-join {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+            transition: transform 0.2s;
+            border: 2px solid #ffffff;
+            cursor: pointer;
+        }
+
+        .btn-join:hover {
+            transform: scale(1.05);
+            background: #f0f0f0;
+        }
+
+        .disclaimer {
+            margin-top: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Nav adjustment for join.html */
+        nav {
+            background-color: var(--white);
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 5%;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .grid-container {
+                padding: 0 5%;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .summary-box, .cta-container {
+                padding: 0 5%;
+                margin: 0 5% 40px 5%;
+            }
+
+            .summary-content {
+                grid-template-columns: 1fr;
+            }
+
+            .tc-modal-content {
+                padding: 30px 20px;
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-image img {
+                width: 80%;
+                border-width: 8px;
+            }
+
+            .section-title {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+
+            .card {
+                padding: 15px;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .tc-header h3 {
+                font-size: 1.4rem;
+            }
+
+            .tc-scroll-box {
+                font-size: 0.9rem;
+                padding-right: 10px;
+            }
+
+            .btn-join {
+                width: 100%;
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+        }
+
+        /* --- T&C Modal Styles --- */
+        .tc-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tc-modal-content {
+            background-color: #ffffff;
+            padding: 50px;
+            border-radius: 12px;
+            width: 95%;
+            max-width: 750px;
+            max-height: 90vh;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .tc-header {
+            text-align: left;
+            margin-bottom: 35px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 20px;
+        }
+
+        .tc-header h3 {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .tc-scroll-box {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 25px;
+            margin-bottom: 35px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #444;
+            scrollbar-width: thin;
+            scrollbar-color: #ddd transparent;
+            font-family: "Georgia", "Times New Roman", serif;
+        }
+
+        .tc-scroll-box::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .tc-scroll-box::-webkit-scrollbar-thumb {
+            background-color: #ddd;
+            border-radius: 10px;
+        }
+
+        .tc-section {
+            margin-bottom: 30px;
+        }
+
+        .tc-section h4 {
+            color: #000;
+            margin-bottom: 12px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: inherit;
+        }
+
+        .tc-section p {
+            color: #4a4a4a;
+            text-indent: 0;
+        }
+
+        .tc-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 25px;
+            border-top: 1px solid #eaeaea;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .checkbox-group input {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            border-radius: 4px;
+            accent-color: #1a1a1a;
+        }
+
+        .btn-submit {
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            padding: 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: none;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-submit:disabled {
+            background: #f0f0f0;
+            color: #aaa;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            background: #333;
+            transform: translateY(-1px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .binding-note {
+            font-size: 0.85rem;
+            color: #888;
+            text-align: left;
+            margin-top: 5px;
+        }
+
+        .tc-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.2s;
+        }
+
+        .tc-close:hover {
+            color: #000;
+        }
+
+        .success-msg {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .success-msg h2 {
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="home.html">
+                <img src="../image/logo.png" alt="Occasioner Logo" class="logo-img">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="home.html" class="nav-item" data-page="home">Home</a>
+            <a href="about.html" class="nav-item" data-page="about">About us</a>
+            <a href="service.html" class="nav-item" data-page="services">Services</a>
+            <a href="how-it-works.html" class="nav-item" data-page="how-it-works">How it Works</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>BUILD YOUR BUSINESS WITH OCCASIONER!</h1>
+                <p>Join our network of trusted cooks, cleaners, and decorators. Start earning on your own schedule.</p>
+            </div>
+            <div class="hero-image">
+                <img src="../image/chef.jpg" alt="Professional Cook">
+            </div>
+        </section>
+
+        <div class="section-title">BECOME A PRO: KEY AGREEMENT TERMS</div>
+        <section class="grid-container">
+            <div class="card">
+                <div class="card-icon">🕒</div>
+                <div>
+                    <h3>Flexible Work Hours</h3>
+                    <p>Choose your own availability and manage your schedule via our app.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">⭐</div>
+                <div>
+                    <h3>Professional Standards</h3>
+                    <p>Commit to quality service and reliability for every booked occasion.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <div>
+                    <h3>Job Assignments</h3>
+                    <p>Understand the booking process and how we match you with clients.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">💰</div>
+                <div>
+                    <h3>Payments</h3>
+                    <p>Clear terms for earnings, service fees, and weekly disbursement schedules.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🛡️</div>
+                <div>
+                    <h3>Safety & Conduct</h3>
+                    <p>Maintain professional standards and mutual respect at all times.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">📄</div>
+                <div>
+                    <h3>Agreement Terms</h3>
+                    <p>Detailed, non-negotiable clauses to protect both you and the client.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="summary-box">
+            <h3 style="margin-bottom: 20px;">SERVICE AGREEMENT SUMMARY</h3>
+            <div class="summary-content">
+                <div class="left-col">
+                    <p><strong>1. Service Deliverables:</strong> Serve your own availability, and provide services
+                        according to the standards mentioned in the professional handbook.</p>
+                    <p><strong>2. Bookings & Cancellations:</strong> Commit to quality and reliability. Any
+                        cancellations must be made 24 hours in advance to avoid penalties.</p>
+                    <p><strong>3. Professional Conduct:</strong> Treat every home with respect. Professionalism is the
+                        core of our service network.</p>
+                </div>
+                <div class="right-col">
+                    <p><strong>4. Confidentiality:</strong> Do not share client contact information or personal details
+                        outside of the Occasioner platform.</p>
+                    <p><strong>5. Liability:</strong> Maintain professional standards and respect. Occasioner is a
+                        facilitator and not liable for personal property disputes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-container">
+            <h2>READY TO JOIN OUR PROFESSIONAL NETWORK?</h2>
+            <p style="margin-bottom: 30px;">Accept our terms and become a part of the team.</p>
+            <button id="joinNowBtn" class="btn-join">JOIN NOW, IT'S FREE! →</button>
+            <p class="disclaimer">*By clicking 'Join Now', you agree to our <a href="#" onclick="openModal(event)">Terms and Conditions</a>.*</p>
+        </section>
+
+        <!-- Terms & Conditions Modal -->
+        <div id="tcModal" class="tc-modal">
+            <div class="tc-modal-content" id="modalMainContent">
+                <span class="tc-close" onclick="closeModal()">&times;</span>
+                <div class="tc-header">
+                    <h3>Service Agreement</h3>
+                </div>
+                
+                <div class="tc-scroll-box">
+                    <div class="tc-section">
+                        <h4>1. Worker Responsibilities</h4>
+                        <p>All service professionals are expected to arrive at scheduled locations promptly. Services must be rendered according to the quality benchmarks outlined in the professional orientation guide. Unauthorized cancellations or failure to attend confirmed bookings may lead to account suspension.</p>
+                    </div>
+                    
+                    <div class="tc-section">
+                        <h4>2. Safety & Professional Conduct</h4>
+                        <p>Unlawful activities, harassment, or disregard for safety protocols will result in immediate termination of the agreement. Professionals must maintain absolute discretion, respecting the privacy and property of every client.</p>
+                    </div>
+
+                    <div class="tc-section">
+                        <h4>3. Service Commitment</h4>
+                        <p>Professionals should only accept engagements for which they are fully available. Consistent fulfillment of accepted bookings is essential for maintaining a high-performance rating within the network.</p>
+                    </div>
+
+                    <div class="tc-section">
+                        <h4>4. Compensation & Platform Integrity</h4>
+                        <p>All financial transactions must be facilitated through the Occasioner platform. Bypassing the platform for direct payments is strictly prohibited and nullifies insurance coverage. Platform service fees are adjusted automatically at the point of disbursement.</p>
+                    </div>
+
+                    <div class="tc-section">
+                        <h4>5. Data Stewardship & Privacy</h4>
+                        <p>Personal data is utilized exclusively for identity verification, booking facilitation, and quality assurance. Occasioner adheres to strict data protection standards and does not share professional profiles with unverified external entities.</p>
+                    </div>
+
+                    <div class="tc-section">
+                        <h4>6. Verification & Onboarding</h4>
+                        <p>The onboarding process is subject to successful background checks and verification of professional credentials. Occasioner retains the absolute discretion to finalize or decline any partner application based on these findings.</p>
+                    </div>
+                </div>
+
+                <div class="tc-footer">
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="agreeCheckbox">
+                        I confirm that I have read and agree to the terms mentioned above.
+                    </label>
+                    <button id="submitApplication" class="btn-submit" disabled>Submit Professional Application</button>
+                    <p class="binding-note">This digital agreement is legally binding and recorded under platform governance policies.</p>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <div class="tc-modal-content success-msg" id="successContent">
+                <h2>Agreement Accepted!</h2>
+                <p>Thank you! Your final step is to fill out our official application form to complete your profiling.</p>
+                <a href="https://docs.google.com/forms/" target="_blank" class="btn-submit" style="margin-top: 20px; display: inline-block; text-decoration: none;" onclick="closeModal()">Proceed to Application Form →</a>
+            </div>
+        </div>
+
+        <script>
+            const modal = document.getElementById('tcModal');
+            const joinBtn = document.getElementById('joinNowBtn');
+            const checkbox = document.getElementById('agreeCheckbox');
+            const submitBtn = document.getElementById('submitApplication');
+            const modalMain = document.getElementById('modalMainContent');
+            const successContent = document.getElementById('successContent');
+
+            function openModal(e) { e.preventDefault(); modal.style.display = 'flex'; }
+            function closeModal() { modal.style.display = 'none'; resetModal(); }
+            
+            joinBtn.onclick = openModal;
+            
+            checkbox.onchange = function() {
+                submitBtn.disabled = !this.checked;
+            };
+
+            submitBtn.onclick = function() {
+                modalMain.style.display = 'none';
+                successContent.style.display = 'block';
+            };
+
+            function resetModal() {
+                modalMain.style.display = 'flex';
+                successContent.style.display = 'none';
+                checkbox.checked = false;
+                submitBtn.disabled = true;
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) closeModal();
+            };
+        </script>
+    </main>
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h5>Quick Links</h5>
+                <ul class="footer-links-grid">
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="join.html">Become a Professional</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Contact Us</h5>
+                <ul>
+                    <li>Email: info@ocassioner.com</li>
+                    <li>Phone: +977-9800000000</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Ocassioner</p>
+        </div>
+    </div>
+    <script src="../js/navigation.js"></script>
+</body>
+
+</html>

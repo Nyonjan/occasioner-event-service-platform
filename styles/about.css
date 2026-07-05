@@ -1,0 +1,292 @@
+/* Page-specific Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Hero Section for About Page */
+.hero-about {
+  background: linear-gradient(135deg, #FDBD2F, #FDBD2F);
+  color: white;
+  text-align: center;
+  padding: 6rem 0;
+}
+
+.hero-about h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.hero-about p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+/* About Section */
+.about-section {
+  padding: 5rem 0;
+  background: white;
+}
+
+.about-content {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-image {
+  flex: 1;
+  max-width: 500px;
+}
+
+.about-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #666;
+  text-align: justify;
+}
+
+.stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat h3 {
+  font-size: 2rem;
+  color: #f4c24b;
+  margin-bottom: 0.5rem;
+}
+
+.stat p {
+  color: #666;
+  font-weight: 500;
+}
+
+/* Testimonials Section */
+.testimonials {
+  padding: 5rem 0;
+  background: #fff7e9;
+}
+
+.testimonials h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 3.5rem;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stars {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.testimonial-card p {
+  font-size: 1.05rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.customer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.customer-avatar {
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  background: #fff1d1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.customer-info h4 {
+  color: #333;
+  margin-bottom: 0.2rem;
+}
+
+.customer-info span {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+  padding: 5rem 0;
+  background: white;
+}
+
+.why-choose-us h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3.5rem;
+  color: #333;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.feature {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  background: #fff7e9;
+  transition: transform 0.3s;
+  border: 1px solid #f9ebcc;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.feature h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.feature p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+  
+  .about-image {
+    max-width: 100%;
+  }
+
+  .about-image img {
+    height: auto;
+    max-height: 400px;
+  }
+  
+  .about-text p {
+    text-align: center;
+  }
+  
+  .stats {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-about {
+    padding: 4rem 1rem;
+  }
+
+  .hero-about h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-about p {
+    font-size: 1.1rem;
+  }
+
+  .about-section,
+  .testimonials,
+  .why-choose-us {
+    padding: 4rem 0;
+  }
+
+  .about-text h2,
+  .testimonials h2,
+  .why-choose-us h2 {
+    font-size: 2rem;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-about h1 {
+    font-size: 2rem;
+  }
+
+  .stat {
+    width: 100%;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .testimonial-card,
+  .feature {
+    padding: 1.5rem;
+  }
+}

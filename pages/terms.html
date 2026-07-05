@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions | Occasioner</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff7e9;
+            --primary-yellow: #f4c24b;
+            --text-dark: #1a1a1a;
+            --text-muted: #555;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .terms-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 50px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid #eee;
+        }
+
+        .terms-header {
+            text-align: left;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--primary-yellow);
+            padding-bottom: 20px;
+        }
+
+        .terms-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .terms-section {
+            margin-bottom: 40px;
+        }
+
+        .terms-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-yellow);
+            padding-left: 15px;
+        }
+
+        .terms-section h3 {
+            font-size: 1.2rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .terms-section p {
+            margin-bottom: 15px;
+            color: var(--text-muted);
+        }
+
+        .terms-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .terms-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+        }
+
+        .terms-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-yellow);
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .agreement-box {
+            background: #fafafa;
+            border: 1px solid #eee;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .agreement-box p {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #777;
+            margin: 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: var(--primary-yellow);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(244, 194, 75, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            background: #e6b143;
+            box-shadow: 0 8px 20px rgba(244, 194, 75, 0.4);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .terms-container {
+                margin: 30px 20px;
+                padding: 30px;
+            }
+            .terms-header h1 {
+                font-size: 1.8rem;
+            }
+            .terms-section h2 {
+                font-size: 1.35rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .terms-container {
+                margin: 20px 10px;
+                padding: 20px;
+            }
+            .terms-header h1 {
+                font-size: 1.5rem;
+            }
+            .terms-header {
+                margin-bottom: 25px;
+            }
+            .terms-section h2 {
+                font-size: 1.25rem;
+            }
+            .terms-section h3 {
+                font-size: 1.1rem;
+            }
+            .terms-section {
+                margin-bottom: 30px;
+            }
+            .agreement-box {
+                padding: 20px;
+                margin-top: 30px;
+            }
+            .agreement-box p {
+                font-size: 0.85rem;
+            }
+            .back-btn {
+                width: 100%;
+                font-size: 1rem;
+                padding: 12px 20px;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Standard Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="home.html">
+                <img src="../image/logo.png" alt="Occasioner Logo" class="logo-img">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="home.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item">About us</a>
+            <a href="service.html" class="nav-item">Services</a>
+            <a href="how-it-works.html" class="nav-item">How it Works</a>
+        </div>
+    </nav>
+
+    <div class="terms-container">
+        <div class="terms-header">
+            <h1>Terms & Conditions</h1>
+            <p>Last Updated: April 5, 2026</p>
+        </div>
+
+        <!-- Section 1: For Users (Customers) -->
+        <div class="terms-section">
+            <h2>1. For Users (Customers)</h2>
+            
+            <h3>1.1 Booking Policy</h3>
+            <p>Customers can browse and book various event services and curated occasion packages through the OCCASIONER platform. All bookings are subject to availability and confirmation from the assigned service professional.</p>
+            
+            <h3>1.2 Payment Rules</h3>
+            <ul class="terms-list">
+                <li>A <strong>50% advance payment</strong> is required at the time of booking to secure the professional's services.</li>
+                <li>The remaining 50% balance must be settled within <strong>12 hours</strong> of service completion.</li>
+                <li>Secure payments are processed through our integrated payment gateway.</li>
+            </ul>
+
+            <h3>1.3 Cancellation Policy</h3>
+            <p>Users may cancel bookings through the dashboard. Late cancellations (made less than 24 hours before the event) may incur charges or forfeit the advance payment according to the professional's specific policy.</p>
+
+            <h3>1.4 Platform Responsibility</h3>
+            <p>OCCASIONER acts as a facilitator, connecting verified professionals with customers. While we ensure rigorous background checks and experience verification, the final service delivery is the responsibility of the assigned professional.</p>
+
+            <h3>1.5 Worker Replacement Policy</h3>
+            <p>If for any reason a customer is dissatisfied with an assigned professional, they may request a replacement professional through our support team at least 48 hours before the scheduled event.</p>
+        </div>
+
+        <!-- Section 2: For Service Providers (Workers) -->
+        <div class="terms-section">
+            <h2>2. For Service Providers (Workers)</h2>
+            
+            <h3>2.1 Professionalism & Punctuality</h3>
+            <p>All service providers must arrive at the scheduled location on time. Services must be completed professionally and to the standards defined by the platform's quality benchmarks.</p>
+            
+            <h3>2.2 Cancellation & Commitment</h3>
+            <p>Last-minute cancellations without a valid and documented reason are strictly prohibited. Consistency and reliability are core requirements for maintaining an active profile on OCCASIONER.</p>
+
+            <h3>2.3 Conduct & Behaviour</h3>
+            <p>Service providers must maintain respectful behavior and absolute professionalism at all times. Professionals are expected to respect customer privacy and property.</p>
+
+            <h3>2.4 Legal & Safety Compliance</h3>
+            <p>Any illegal activities, including but not limited to theft, harassment, or unsafe practices, will result in immediate termination of the agreement and potential legal action.</p>
+
+            <h3>2.5 System Integrity & Commission</h3>
+            <ul class="terms-list">
+                <li>Bypassing the OCCASIONER platform for direct deals with customers is strictly prohibited.</li>
+                <li>All service providers agree to the platform commission as stated in their individual agreements.</li>
+                <li>Violation of system integrity will result in permanent removal from the network.</li>
+            </ul>
+
+            <h3>2.6 Verification Clause</h3>
+            <p>Professionals must provide a valid government-issued ID and documented proof of service experience. OCCASIONER reserves the right to approve or reject applications based on this verification.</p>
+        </div>
+
+        <!-- Data Privacy -->
+        <div class="terms-section">
+            <h2>3. Data Privacy</h2>
+            <p>Your privacy is paramount to us at OCCASIONER. User and service provider data (including names, contact details, and addresses) are utilized exclusively for:</p>
+            <ul class="terms-list">
+                <li>Facilitating bookings and service delivery.</li>
+                <li>Internal verification and background checks.</li>
+                <li>Essential communication regarding event details.</li>
+            </ul>
+            <p><strong>OCCASIONER does not sell, trade, or share personal data with unverified third parties for marketing purposes.</strong></p>
+        </div>
+
+        <div class="agreement-box">
+            <p>“By using this platform, you agree to all the terms and conditions stated above. This agreement is digitally recorded and binding under platform policy.”</p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="home.html" class="back-btn">← Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Simple Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h5>Quick Links</h5>
+                <ul class="footer-links-grid">
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="join.html">Become a Professional</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Contact Us</h5>
+                <ul>
+                    <li>Email: info@ocassioner.com</li>
+                    <li>Phone: +977-9800000000</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Ocassioner</p>
+        </div>
+    </div>
+</body>
+</html>

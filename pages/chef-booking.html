@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef Booking - Ocassioner</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/booking.css">
+    <link rel="stylesheet" href="../styles/chef-booking.css">
+</head>
+
+<body class="chef-booking-page">
+    <nav>
+        <div class="logo">
+            <a href="home.html">
+                <img src="../image/logo.png" alt="Occasioner Logo" class="logo-img">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="home.html" class="nav-item active" data-page="home">Home</a>
+            <a href="about.html" class="nav-item" data-page="about">About us</a>
+            <a href="service.html" class="nav-item" data-page="services">Services</a>
+            <a href="how-it-works.html" class="nav-item" data-page="how-it-works">How it Works</a>
+        </div>
+        <a href="#" class="login" id="loginBtn">Login/Signup</a>
+        <div class="user-menu" id="userMenu" style="display: none;">
+            <button class="user-button" id="userButton">
+                <span class="user-name" id="userName"></span>
+                <span class="user-icon">👤</span>
+            </button>
+            <div class="dropdown" id="dropdown" style="display: none;">
+                <div class="dropdown-header">
+                    <span class="greeting" id="greeting"></span>
+                </div>
+                <hr>
+                <a href="bookings.html">My Bookings</a>
+                <a href="#" id="logoutBtn">Sign Out</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 20px;">
+        <button class="back-link-btn" onclick="history.back()">&#8592;</button>
+    </div>
+
+    <div class="container">
+
+        <!-- Service Details Panel -->
+        <div class="service-details-hero">
+            <div class="service-image-left">
+                <img id="serviceImage" src="../image/chef.jpg" alt="Chef Services">
+            </div>
+            <div class="service-info-right">
+                <h1 id="serviceTitle">Professional Chef Services</h1>
+                <p id="serviceDescription">
+                    Hire professional chefs for your events with expertise in various cuisines.
+                    Our experienced chefs will prepare delicious meals tailored to your preferences
+                    and dietary requirements, ensuring your guests have an unforgettable culinary experience.
+                </p>
+                <div class="whats-included">
+                    <p style="margin-bottom: 5px;">What's Included:</p>
+                    <ul class="included-list">
+                        <li>✓ Custom menu planning</li>
+                        <li>✓ On-site meal preparation</li>
+                        <li>✓ Table setup and plating</li>
+                        <li>✓ Serving during meal</li>
+                </div>
+            </div>
+        </div>
+
+        <!-- START BOOKING LAYOUT WRAPPER -->
+        <div class="booking-flex-layout">
+
+            <!-- NEW MULTI-STEP BOOKING CARD -->
+            <div class="multistep-card">
+                <h2 class="card-heading">COMPLETE YOUR HIRING</h2>
+
+                <form id="chefBookingForm">
+
+                    <!-- STEP 1: Guests -->
+                    <div class="form-step active" id="step-1">
+                        <div class="step-content-center">
+                            <label class="step-title-center">For how many people?</label>
+                            <input type="text" class="custom-pill-input" id="guestCount" name="guestCount"
+                                placeholder="E.g 7" required>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Event Details -->
+                    <div class="form-step" id="step-2">
+                        <div class="step-content-left">
+                            <h3 class="step-title">Event Details</h3>
+
+                            <div class="form-grid">
+                                <div class="grid-item">
+                                    <label class="step-label-small">Event Date *</label>
+                                    <input type="date" id="eventDate" name="eventDate" class="custom-pill-input"
+                                        required>
+                                </div>
+                                <div class="grid-item">
+                                    <label class="step-label-small">Event Time *</label>
+                                    <input type="time" id="eventTime" name="eventTime" class="custom-pill-input"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="form-row-block">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                    <label class="step-label-small">Location *</label>
+                                    <div id="useRegisteredAddressContainer" style="display: none;">
+                                        <label
+                                            style="font-size: 0.85rem; color: #111; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                                            <input type="checkbox" id="useRegisteredAddress"> Use my registered address
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="map-mock">
+                                    <input type="text" class="map-search-input" id="specificLocation"
+                                        name="specificLocation" placeholder="🔍 Search" required>
+                                    <div class="map-image-placeholder">
+                                        <!-- Embedded Maps mockup -->
+                                        <div id="map"></div>
+                                    </div>
+                                </div>
+                                <!-- Hidden inputs for backward compatibility -->
+                                <input type="hidden" name="locationArea" value="Kathmandu">
+                                <input type="hidden" name="customerName" id="customerName" value="">
+                                <input type="hidden" name="phoneNumber" id="phoneNumber" value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Food Preferences -->
+                    <div class="form-step" id="step-3">
+                        <div class="step-content-left pref-form">
+
+                            <div class="pref-row">
+                                <label class="pref-label">Chef required</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="number" id="chefCount" name="chefCount" value="1" min="1"
+                                        class="custom-pill-input small-pill">
+                                    <span class="available-badge">Available: 15</span>
+                                </div>
+                            </div>
+
+                            <div class="pref-row">
+                                <label class="pref-label">Food Preference*</label>
+                                <div class="chip-group">
+                                    <label><input type="radio" name="foodPreference" value="veg" required> <span
+                                            class="chip">🥗 Vegetarian</span></label>
+                                    <label><input type="radio" name="foodPreference" value="non-veg"> <span
+                                            class="chip">🍖 Non-Vegetarian</span></label>
+                                    <label><input type="radio" name="foodPreference" value="both"> <span
+                                            class="chip">🍽️ Both</span></label>
+                                </div>
+                            </div>
+
+                            <div class="pref-row">
+                                <label class="pref-label">Meal *</label>
+                                <div class="chip-group">
+                                    <label><input type="radio" name="mealType" value="breakfast" required> <span
+                                            class="chip">🌅 Breakfast</span></label>
+                                    <label><input type="radio" name="mealType" value="lunch"> <span class="chip">☀️
+                                            Lunch</span></label>
+                                    <label><input type="radio" name="mealType" value="dinner"> <span class="chip">🌙
+                                            Dinner</span></label>
+                                </div>
+                            </div>
+
+                            <div class="pref-row align-top">
+                                <label class="pref-label">Any Allergies*</label>
+                                <div class="stacked-chips">
+                                    <div class="chip-group">
+                                        <label><input type="radio" name="hasAllergy" value="no" checked required> <span
+                                                class="chip outline-chip">❌ No</span></label>
+                                        <label><input type="radio" name="hasAllergy" value="yes"> <span
+                                                class="chip outline-chip">✅ Yes</span></label>
+                                    </div>
+                                    <div id="allergyInputContainer" style="display: none; margin-top: 10px;">
+                                        <input type="text" id="allergies" name="allergies"
+                                            class="custom-pill-input wide-pill" placeholder="Type here....">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pref-row align-top">
+                                <label class="pref-label">Food items *</label>
+                                <div class="stacked-chips">
+                                    <div class="chip-group">
+                                        <label><input type="radio" name="foodItemsType" value="specific" checked> <span
+                                                class="chip outline-chip">🛒 Specific Cuisine</span></label>
+                                        <label><input type="radio" name="foodItemsType" value="custom"> <span
+                                                class="chip outline-chip">📝 Custom</span></label>
+                                    </div>
+
+                                    <!-- Specific Cuisine Dropdown (shown when 'specific' checked) -->
+                                    <div id="specificCuisineContainer">
+                                        <select id="addCuisineSelect" class="add-cuisine-select">
+                                            <option value="">+ Add Cuisine</option>
+                                            <option value="Italian">🇮🇹 Italian</option>
+                                            <option value="Chinese">🇨🇳 Chinese</option>
+                                            <option value="Indian">🇮🇳 Indian</option>
+                                            <option value="Newari">🇳🇵 Newari</option>
+                                            <option value="Thakali">🍱 Thakali</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Custom Item Input (shown when 'custom' checked) -->
+                                    <div id="customItemContainer" style="display: none;">
+                                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                                            <div style="display: flex; gap: 10px;">
+                                                <input type="text" id="customItemInput" class="custom-pill-input"
+                                                    placeholder="E.g. Momo, Daal Vat" style="width: 200px;">
+                                                <button type="button" id="addCustomItemBtn"
+                                                    class="add-btn-small">Add</button>
+                                            </div>
+                                            <!-- SUGGESTIONS LIST -->
+                                            <div class="suggestions-label">Suggestions (Quick Add):</div>
+                                            <div class="suggestions-list" id="customSuggestions">
+                                                <span class="suggestion-chip" data-val="Momo">🥟 Momo</span>
+                                                <span class="suggestion-chip" data-val="Daal Bhat">🍚 Daal Bhat</span>
+                                                <span class="suggestion-chip" data-val="Chowmein">🍝 Chowmein</span>
+                                                <span class="suggestion-chip" data-val="Sel Roti">🍩 Sel Roti</span>
+                                                <span class="suggestion-chip" data-val="Aloo Tama">🍲 Aloo Tama</span>
+                                                <span class="suggestion-chip" data-val="Sukuti">🥩 Sukuti</span>
+                                                <span class="suggestion-chip" data-val="Gundruk">🥬 Gundruk</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="cuisine-selection-box">
+                                        <!-- Chips will be rendered here by JS -->
+                                    </div>
+                                    <input type="hidden" name="cuisineType" id="cuisineType" value="">
+                                </div>
+                            </div>
+
+                            <div class="pref-row">
+                                <label class="pref-label">Groceries *</label>
+                                <div class="chip-group">
+                                    <label><input type="radio" name="groceries" value="include" required> <span
+                                            class="chip outline-chip">Include</span></label>
+                                    <label><input type="radio" name="groceries" value="exclude"> <span
+                                            class="chip outline-chip">Exclude</span></label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Specific Request -->
+                    <div class="form-step" id="step-4">
+                        <div class="step-content-center">
+                            <label class="step-title-center" style="margin-bottom: 20px;">Any specific request?</label>
+                            <div class="textarea-container">
+                                <textarea id="specificRequest" name="specificRequest" class="custom-textarea"
+                                    placeholder="Type here......"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROGRESS AND NAVIGATION -->
+                    <div class="multistep-footer">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="progressBar" style="width: 25%;"></div>
+                        </div>
+                        <div class="nav-buttons">
+                            <button type="button" class="nav-arrow left" id="prevBtn" disabled>&#8592;</button>
+                            <button type="button" class="nav-arrow right" id="nextBtn">&#8594;</button>
+                            <button type="button" class="nav-arrow right" id="submitBtn"
+                                style="display: none;">&#8594;</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- NEW: PRICE SUMMARY CARD (SIDEBAR) -->
+            <div class="price-summary-sidebar">
+                <div class="price-card">
+                    <h3>Price Summary</h3>
+
+                    <div class="price-row">
+                        <span>👤 Guests</span>
+                        <span id="summaryGuestCount">0</span>
+                    </div>
+
+                    <hr>
+
+                    <div class="price-row">
+                        <span>👨‍🍳 Chef Service</span>
+                        <span id="summaryChefFee">Rs. 0</span>
+                    </div>
+
+                    <div class="price-row">
+                        <span>🍽️ Food & Meals</span>
+                        <span id="summaryFoodCost">Rs. 0</span>
+                    </div>
+
+                    <div class="price-row">
+                        <span>🛒 Groceries</span>
+                        <span id="summaryGroceryCost">Rs. 0</span>
+                    </div>
+
+                    <div class="price-total">
+                        <span class="total-label">Grand Total</span>
+                        <span class="total-amount" id="summaryGrandTotal">Rs. 0</span>
+                    </div>
+
+                    <p class="price-note">* Final price may vary based on specific items.</p>
+                </div>
+            </div>
+
+        </div> <!-- END OF booking-flex-layout -->
+    </div> <!-- END OF main container -->
+
+    <!-- Final Confirmation Modal -->
+    <div id="confirmModal" class="confirm-modal-overlay" style="display: none;">
+        <div class="confirm-modal-content" style="max-width: 500px;">
+            <h3>Review Your Hiring Details</h3>
+
+            <div id="confirmSummary" class="confirm-summary">
+                <!-- Data populated by JS -->
+            </div>
+
+            <div class="confirm-actions" style="margin-top: 30px;">
+                <button type="button" class="btn-confirm" id="finalConfirmBtn">Confirm Booking</button>
+                <button type="button" class="btn-back" id="finalBackBtn">Back to Form</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal (Login/Signup - retained for flow) -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="authClose">&times;</span>
+            <div id="loginForm">
+                <h2>Login to Complete Booking</h2>
+                <div id="loginMessage" style="display: none;"></div>
+                <form id="loginFormElement">
+                    <div class="form-group">
+                        <label for="loginEmail">Email:</label>
+                        <input type="email" id="loginEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password:</label>
+                        <input type="password" id="loginPassword" name="password" required>
+                    </div>
+                    <button type="submit" class="submit-btn"
+                        style="background:#f4c24b; color:white; padding:10px; border:none; width:100%; border-radius:5px; font-weight:bold;">Login</button>
+                </form>
+                <p class="form-switch" style="text-align:center; margin-top:10px;">Don't have an account? <a href="#"
+                        id="showSignup" style="color:#f4c24b;">Sign up</a></p>
+            </div>
+            <div id="signupForm" style="display: none;">
+                <h2>Create Account</h2>
+                <div id="signupMessage" style="display: none;"></div>
+                <form id="signupFormElement">
+                    <div class="form-group"><label>Username:</label><input type="text" name="username" required
+                            style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;"></div>
+                    <div class="form-group"><label>Full Name:</label><input type="text" name="full_name" required
+                            style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;"></div>
+                    <div class="form-group"><label>Email:</label><input type="email" name="email" required
+                            style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;"></div>
+                    <div class="form-group"><label>Phone Number:</label><input type="text" name="phone_number" required
+                            style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;"></div>
+                    <div class="form-group"><label>Address:</label><input type="text" name="address" required
+                            style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;"></div>
+                    <div class="form-group"><label>Password:</label><input type="password" name="password" required
+                            style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;"></div>
+                    <button type="submit" class="submit-btn"
+                        style="background:#f4c24b; color:white; padding:10px; border:none; width:100%; border-radius:5px; font-weight:bold; margin-top:10px;">Sign
+                        Up</button>
+                </form>
+                <p class="form-switch" style="text-align:center; margin-top:10px;">Already have an account? <a href="#"
+                        id="showLogin" style="color:#f4c24b;">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer" style="margin-top: 50px;">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h5>Quick Links</h5>
+                <ul class="footer-links-grid">
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="join.html">Become a Professional</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Contact Us</h5>
+                <ul>
+                    <li>Email: info@ocassioner.com</li>
+                    <li>Phone: +977-9800000000</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Ocassioner</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/chef-booking.js"></script>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0T6xPnusaTrgZtczxML0Ej300cLn56ic&libraries=places&callback=initMap"></script>
+</body>
+
+</html>

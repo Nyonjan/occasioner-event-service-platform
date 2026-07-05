@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - Ocassioner</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/how-it-works.css">
+</head>
+<body>
+<!-- Header -->
+<nav>
+    <div class="logo">
+        <a href="home.html">
+          <img src="../image/logo.png" alt="Occasioner Logo" class="logo-img">
+        </a>
+      </div>
+    <div class="nav-links">
+      <a href="home.html" class="nav-item" data-page="home">Home</a>
+      <a href="about.html" class="nav-item" data-page="about">About us</a>
+      <a href="service.html" class="nav-item" data-page="services">Services</a>
+      <a href="how-it-works.html" class="nav-item active" data-page="how-it-works">How it Works</a>
+    </div>
+    
+    <!-- Login/Signup Button (shown when not logged in) -->
+    <a href="#" class="login" id="loginBtn">Login/Signup</a>
+    
+    <!-- User Menu (shown when logged in) -->
+    <div class="user-menu" id="userMenu" style="display: none;">
+      <button class="user-button" id="userButton">
+        <span class="user-name" id="userName"></span>
+        <span class="user-icon">👤</span>
+      </button>
+      <div class="dropdown" id="dropdown" style="display: none;">
+        <div class="dropdown-header">
+          <span class="greeting" id="greeting"></span>
+        </div>
+        <hr>
+        <a href="bookings.html">My Bookings</a>
+        <a href="#" id="logoutBtn">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Login/Signup Modal -->
+  <div id="authModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      
+      <!-- Login Form -->
+      <div id="loginForm" class="auth-form">
+        <h2>Login</h2>
+        <div id="loginMessage" class="message"></div>
+        <form id="loginFormElement">
+          <div class="form-group">
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="password" required>
+          </div>
+          <button type="submit">Login</button>
+          <p class="switch-form">Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
+        </form>
+      </div>
+  
+      <!-- Signup Form -->
+      <div id="signupForm" class="auth-form" style="display: none;">
+        <h2>Sign Up</h2>
+        <div id="signupMessage" class="message"></div>
+        <form id="signupFormElement">
+          <div class="form-group">
+            <label for="signupUsername">Username:</label>
+            <input type="text" id="signupUsername" name="username" required>
+          </div>
+          <div class="form-group">
+            <label for="signupName">Full Name:</label>
+            <input type="text" id="signupName" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="signupEmail">Email:</label>
+            <input type="email" id="signupEmail" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="signupPhone">Phone Number:</label>
+            <input type="text" id="signupPhone" name="phone_number" required>
+          </div>
+          <div class="form-group">
+            <label for="signupAddress">Address:</label>
+            <input type="text" id="signupAddress" name="address" required>
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">Password:</label>
+            <input type="password" id="signupPassword" name="password" required>
+          </div>
+          <div class="form-group checkbox-group" style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <input type="checkbox" id="signupTerms" onchange="document.getElementById('signupSubmitBtn').disabled = !this.checked;" style="width: auto; margin: 0; cursor: pointer; height: 18px; width: 18px; accent-color: #FBC02D;">
+            <label for="signupTerms" style="font-size: 0.9rem; font-weight: normal; cursor: pointer; margin: 0; display: inline;">
+              I agree to the <a href="terms.html" style="color: #d49500; text-decoration: underline; font-weight: bold;">Terms & Conditions</a> and <a href="privacy.html" style="color: #d49500; text-decoration: underline; font-weight: bold;">Privacy Policy</a>
+            </label>
+          </div>
+          <button type="submit" id="signupSubmitBtn" disabled style="transition: background 0.3s;">Sign Up</button>
+          <p class="switch-form">Already have an account? <a href="#" id="showLogin">Login</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+    <!-- Hero Section -->
+    <section class="hero-works">
+        <div class="container">
+            <h1>How It Works</h1>
+            <p>Getting your perfect event organized is easier than you think! Follow these simple steps to hire the best professionals for your occasion.</p>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps-section">
+        <div class="container">
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="step-content">
+                    <div class="step-info">
+                        <div class="step-number">
+                            <span>01</span>
+                        </div>
+                        <div class="step-text">
+                            <h2>Browse & Choose Services</h2>
+                            <p>
+                                Explore our wide range of services including professional chefs, decorators, photographers, 
+                                entertainers, helpers, and cleaners. Browse through different packages or individual services 
+                                that match your event type and budget. Each service provider has detailed profiles, ratings, 
+                                and previous work samples to help you make the right choice.
+                            </p>
+                            <ul class="step-features">
+                                <li>View detailed service profiles</li>
+                                <li>Compare packages and pricing</li>
+                                <li>Read customer reviews and ratings</li>
+                                <li>Filter by location and availability</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-card">
+                            <div class="visual-icon">🔍</div>
+                            <h3>Browse Services</h3>
+                            <div class="service-grid">
+                                <div class="service-item">👨‍🍳 Chef</div>
+                                <div class="service-item">🎨 Decorator</div>
+                                <div class="service-item">📸 Photographer</div>
+                                <div class="service-item">🎵 Entertainment</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step reverse">
+                <div class="step-content">
+                    <div class="step-visual">
+                        <div class="visual-card">
+                            <div class="visual-icon">📅</div>
+                            <h3>Book Your Service</h3>
+                            <div class="booking-form-preview">
+                                <div class="form-field">📅 Event Date</div>
+                                <div class="form-field">🕐 Event Time</div>
+                                <div class="form-field">📍 Location</div>
+                                <div class="form-field">👥 Guest Count</div>
+                                <div class="book-button">Book Now</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-info">
+                        <div class="step-number">
+                            <span>02</span>
+                        </div>
+                        <div class="step-text">
+                            <h2>Book & Customize</h2>
+                            <p>
+                                Once you've selected your preferred services, fill out our simple booking form with your event 
+                                details. Specify your requirements, dietary preferences, theme, guest count, and any special 
+                                requests. Our system will calculate the total cost transparently with no hidden fees.
+                            </p>
+                            <ul class="step-features">
+                                <li>Easy online booking form</li>
+                                <li>Customize services to your needs</li>
+                                <li>Transparent pricing with no hidden costs</li>
+                                <li>Secure payment options</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="step-content">
+                    <div class="step-info">
+                        <div class="step-number">
+                            <span>03</span>
+                        </div>
+                        <div class="step-text">
+                            <h2>Relax & Enjoy</h2>
+                            <p>
+                                Sit back and relax while our professional team takes care of everything! Our verified service 
+                                providers will arrive on time, set up everything according to your preferences, and ensure 
+                                your event runs smoothly. You can focus on enjoying time with your guests while we handle 
+                                all the logistics.
+                            </p>
+                            <ul class="step-features">
+                                <li>Professional team arrives on time</li>
+                                <li>Complete setup and service management</li>
+                                <li>24/7 support during your event</li>
+                                <li>Post-event cleanup included</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-card">
+                            <div class="visual-icon">🎉</div>
+                            <h3>Enjoy Your Event</h3>
+                            <div class="celebration">
+                                <div class="party-elements">
+                                    <div class="element">🎂 Delicious Food</div>
+                                    <div class="element">🎈 Beautiful Decor</div>
+                                    <div class="element">📷 Captured Memories</div>
+                                    <div class="element">😊 Happy Guests</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Our Process Section -->
+    <section class="why-process">
+        <div class="container">
+            <h2>Why Our Process Works</h2>
+            <div class="benefits-grid">
+                <div class="benefit">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Quick & Easy</h3>
+                    <p>Book your entire event in just a few clicks. Our streamlined process saves you hours of planning time.</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Verified Professionals</h3>
+                    <p>All our service providers are background-checked and verified for quality and reliability.</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Best Value</h3>
+                    <p>Competitive pricing with transparent costs. No surprise charges or hidden fees.</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Personalized</h3>
+                    <p>Every service is customized to your specific needs and preferences for the perfect event.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Plan Your Perfect Event?</h2>
+                <p>Join thousands of satisfied customers who trust Ocassioner for their special occasions.</p>
+                <div class="cta-buttons">
+                    <a href="service.html" class="btn-primary">Browse Services</a>
+                    <a href="about.html" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h5>Quick Links</h5>
+                <ul class="footer-links-grid">
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="join.html">Become a Professional</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Contact Us</h5>
+                <ul>
+                    <li>Email: info@ocassioner.com</li>
+                    <li>Phone: +977-9800000000</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Ocassioner</p>
+        </div>
+    </div>
+  
+  <script src="../js/auth.js"></script>
+  <script src="../js/navigation.js"></script>
+</body>
+</html>

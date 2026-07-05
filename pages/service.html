@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filter UI</title>
+
+  <link rel="stylesheet" href="../styles/service.css">
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <nav>
+    <div class="logo">
+      <a href="home.html">
+        <img src="../image/logo.png" alt="Occasioner Logo" class="logo-img">
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="home.html" class="nav-item" data-page="home">Home</a>
+      <a href="about.html" class="nav-item" data-page="about">About us</a>
+      <a href="service.html" class="nav-item active" data-page="services">Services</a>
+      <a href="how-it-works.html" class="nav-item" data-page="how-it-works">How it Works</a>
+    </div>
+
+    <!-- Login/Signup Button (shown when not logged in) -->
+    <a href="#" class="login" id="loginBtn">Login/Signup</a>
+
+    <!-- User Menu (shown when logged in) -->
+    <div class="user-menu" id="userMenu" style="display: none;">
+      <button class="user-button" id="userButton">
+        <span class="user-name" id="userName"></span>
+        <span class="user-icon">👤</span>
+      </button>
+      <div class="dropdown" id="dropdown" style="display: none;">
+        <div class="dropdown-header">
+          <span class="greeting" id="greeting"></span>
+        </div>
+        <hr>
+        <a href="bookings.html">My Bookings</a>
+        <a href="#" id="logoutBtn">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+  <!-- Login/Signup Modal -->
+  <div id="authModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+
+      <!-- Login Form -->
+      <div id="loginForm" class="auth-form">
+        <h2>Login</h2>
+        <div id="loginMessage" class="message"></div>
+        <form id="loginFormElement">
+          <div class="form-group">
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="password" required>
+          </div>
+          <button type="submit">Login</button>
+          <p class="switch-form">Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
+        </form>
+      </div>
+
+      <!-- Signup Form -->
+      <div id="signupForm" class="auth-form" style="display: none;">
+        <h2>Sign Up</h2>
+        <div id="signupMessage" class="message"></div>
+        <form id="signupFormElement">
+          <div class="form-group">
+            <label for="signupName">Full Name:</label>
+            <input type="text" id="signupName" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="signupEmail">Email:</label>
+            <input type="email" id="signupEmail" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="signupPhone">Phone Number:</label>
+            <input type="text" id="signupPhone" name="phone_number" required>
+          </div>
+          <div class="form-group">
+            <label for="signupAddress">Address:</label>
+            <input type="text" id="signupAddress" name="address" required>
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">Password:</label>
+            <input type="password" id="signupPassword" name="password" required>
+          </div>
+          <button type="submit">Sign Up</button>
+          <p class="switch-form">Already have an account? <a href="#" id="showLogin">Login</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- By Occasion Section -->
+    <div class="section">
+      <div class="section-header">
+        <div class="title-group">
+          <div class="category-pill">By Occasion</div>
+        </div>
+      </div>
+
+      <div class="carousel-container">
+        <button class="nav-btn nav-btn-left" id="occasion-prev" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="15,18 9,12 15,6"></polyline>
+          </svg>
+        </button>
+
+        <div class="carousel-wrapper">
+          <div class="carousel" id="occasion-carousel">
+            <!-- Card 1 -->
+            <div class="service-card" data-service="birthday">
+              <div class="card-image">
+                <img src="../image/birthday.jpg" alt="Birthday Party">
+                <div class="rating-badge">4.5 ★</div>
+              </div>
+              <button class="hire-btn">Hire</button>
+              <div class="card-content">
+                <h3 class="card-title">Birthday Party</h3>
+                <p class="card-description">Complete birthday party planning with decorations, entertainment, and
+                  catering..</p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="service-card" data-service="wedding">
+              <div class="card-image">
+                <img src="../image/familygathering.jpg" alt="Family Gathering">
+                <div class="rating-badge">4.8 ★</div>
+              </div>
+              <button class="hire-btn">Hire</button>
+              <div class="card-content">
+                <h3 class="card-title">Family Gathering</h3>
+                <p class="card-description">Full-service wedding planning from venue selection to day-of
+                  coordination....</p>
+              </div>
+            </div>
+
+            <!-- Card 3 (Highlighted) -->
+            <div class="service-card highlighted" data-service="corporate">
+              <div class="card-image">
+                <img src="../image/dashain.jpg" alt="Dashain">
+                <div class="rating-badge">4.0 ★</div>
+              </div>
+              <button class="hire-btn">Hire</button>
+              <div class="card-content">
+                <h3 class="card-title">Dashain Celebration</h3>
+                <p class="card-description">Traditional Dashain celebrations with tika arrangements, jamara,....</p>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="service-card" data-service="babyshower">
+              <div class="card-image">
+                <img src="../image/babyshower.jpg" alt="Baby Shower">
+                <div class="rating-badge">4.2 ★</div>
+              </div>
+              <button class="hire-btn">Hire</button>
+              <div class="card-content">
+                <h3 class="card-title">Baby Shower</h3>
+                <p class="card-description">Adorable baby shower planning with themed decorations, games,......</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="nav-btn nav-btn-right" id="occasion-next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- By Service Section -->
+    <div class="section">
+      <div class="section-header">
+        <div class="title-group">
+          <div class="category-pill">By Service</div>
+        </div>
+      </div>
+
+      <div class="carousel-container">
+        <button class="nav-btn nav-btn-left" id="service-prev" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="15,18 9,12 15,6"></polyline>
+          </svg>
+        </button>
+
+        <div class="carousel-wrapper">
+          <div class="carousel" id="service-carousel">
+            <!-- Chef Card -->
+            <div class="service-card" data-service="chef">
+              <div class="card-image">
+                <img src="../image/chef.jpg" alt="Chef Services">
+                <div class="rating-badge">4.9 ★</div>
+              </div>
+              <button class="hire-btn">Hire</button>
+              <div class="card-content">
+                <h3 class="card-title">Chef Services</h3>
+                <p class="card-description">Hire professional chefs for your events with expertise in various
+                  cuisines....</p>
+              </div>
+            </div>
+
+            <!-- Photography Card -->
+            <div class="service-card">
+              <div class="card-image">
+                <img src="../image/photographer.jpg" alt="Photography">
+                <div class="rating-badge">3.9 ★</div>
+              </div>
+              <button class="hire-btn">Hire</button>
+              <div class="card-content">
+                <h3 class="card-title">Photography</h3>
+                <p class="card-description">Professional photography services for events, portraits, and special
+                  occasions.....</p>
+              </div>
+            </div>
+
+            <!-- Catering Card -->
+            <div class="service-card">
+              <div class="card-image">
+                <img src="../image/catering.jpg" alt="Catering">
+                <div class="rating-badge">4.5 ★</div>
+              </div>
+              <button class="hire-btn">Hire</button>
+              <div class="card-content">
+                <h3 class="card-title">Catering</h3>
+                <p class="card-description">Delicious catering services with customizable menus for any event size,.....
+                </p>
+              </div>
+            </div>
+
+            <!-- DJ Services Card -->
+            <div class="service-card">
+              <div class="card-image">
+                <img src="../image/dj.jpg" alt="DJ Services">
+                <div class="rating-badge">4.3 ★</div>
+              </div>
+              <button class="hire-btn">Hire</button>
+              <div class="card-content">
+                <h3 class="card-title">DJ Services</h3>
+                <p class="card-description">Professional DJ services with extensive music library, sound equipment, and
+                  lighting.....</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="nav-btn nav-btn-right" id="service-next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h5>Quick Links</h5>
+        <ul class="footer-links-grid">
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="join.html">Become a Professional</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h5>Contact Us</h5>
+        <ul>
+          <li>Email: info@ocassioner.com</li>
+          <li>Phone: +977-9800000000</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Ocassioner</p>
+    </div>
+  </div>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/service.js"></script>
+
+</body>
+
+</html>
